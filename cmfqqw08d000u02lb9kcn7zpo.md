@@ -1,6 +1,6 @@
 ---
 title: "🚀 Day 51: Introduction to Terraform | My DevOps Journey"
-seoTitle: "Terraform Basics with aws "
+seoTitle: "Terraform Basics with aws"
 seoDescription: "Discover Terraform and Infrastructure as Code basics in this introductory guide for beginners and experienced developers exploring cloud automation"
 datePublished: Fri Sep 19 2025 11:17:09 GMT+0000 (Coordinated Universal Time)
 cuid: cmfqqw08d000u02lb9kcn7zpo
