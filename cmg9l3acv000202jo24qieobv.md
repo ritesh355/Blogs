@@ -1,10 +1,10 @@
 ---
-title: "DAY52: Mounting an EBS Volume on EC2"
+title: "Mounting an EBS Volume on EC2"
 seoTitle: "Mount EBS Volume on EC2 Instance"
 seoDescription: "Learn to attach and mount an EBS volume to an EC2 instance in AWS for persistent storage"
 datePublished: Thu Oct 02 2025 15:42:28 GMT+0000 (Coordinated Universal Time)
 cuid: cmg9l3acv000202jo24qieobv
-slug: day52-mounting-an-ebs-volume-on-ec2
+slug: mounting-an-ebs-volume-on-ec2
 cover: https://cdn.hashnode.com/res/hashnode/image/stock/unsplash/Hcfwew744z4/upload/e2447f757c59e473fc74a3ba5a5d496f.jpeg
 tags: ec2, aws, devops, ebs, mount-volume
 
