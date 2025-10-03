@@ -35,13 +35,13 @@ Learn how to **attach, mount, and use an EBS volume** with an EC2 instance for p
 
 1. Go to **AWS Console → EC2 → Elastic Block Store → Volumes → Create Volume**
     
-2. ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759417635503/4bf40ca5-547c-4cea-a239-ad112c5a5369.png align="center")
+2. ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759417635503/4bf40ca5-547c-4cea-a239-ad112c5a5369.png )
     
 3. Choose **Volume type** (e.g., General Purpose SSD `gp3`)
     
 4. Set **Size** (e.g., 1 GB for testing)
     
-5. ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759417739275/e6aa388e-ec57-40c1-86b9-f2dcc6ace340.png align="center")
+5. ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759417739275/e6aa388e-ec57-40c1-86b9-f2dcc6ace340.png )
     
 6. Select the **same Availability Zone** as your EC2 instance
     
@@ -56,14 +56,14 @@ Learn how to **attach, mount, and use an EBS volume** with an EC2 instance for p
 
 1. Select the volume → **Actions → Attach Volume**
     
-2. ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759418050560/6e51bfb9-57ad-47b1-8af8-3748d1a55d07.png align="center")
+2. ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759418050560/6e51bfb9-57ad-47b1-8af8-3748d1a55d07.png)
     
 3. Choose the **EC2 instance**
     
 4. Click **Attach**
     
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759418074291/b9c80494-a812-4b68-981a-bb8043c004f3.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759418074291/b9c80494-a812-4b68-981a-bb8043c004f3.png )
 
   
 
@@ -80,7 +80,7 @@ Learn how to **attach, mount, and use an EBS volume** with an EC2 instance for p
 ssh -i mykey.pem ec2-user@<EC2-Public-IP>
 ```
 
-![after ssh switch to root user using sudo su -](https://cdn.hashnode.com/res/hashnode/image/upload/v1759418318015/1e9628c6-10df-43b1-a9c2-f0f6e2a93d83.png align="center")
+![after ssh switch to root user using sudo su -](https://cdn.hashnode.com/res/hashnode/image/upload/v1759418318015/1e9628c6-10df-43b1-a9c2-f0f6e2a93d83.png )
 
 2 . After ssh switch into root user
 
@@ -110,7 +110,7 @@ sudo mkfs -t ext4 /dev/nvme1n1
 
 **Note —&gt; replace with your disk name like /dev/xvdf in my case it is not xvdf it is nvme1n1**
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759419214413/fe91692b-af15-414b-aecb-b9121b75a15f.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759419214413/fe91692b-af15-414b-aecb-b9121b75a15f.png )
 
 ### 4\. Mount the Volume
 
@@ -134,7 +134,7 @@ sudo mount /dev/nvme1n1 /mnt/myvolume
     df -h
     ```
     
-    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759419506610/7160c0f9-5438-429f-8f06-4e43d488d0ae.png align="center")
+    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1759419506610/7160c0f9-5438-429f-8f06-4e43d488d0ae.png )
     
     ## 🌐 Connect With Me
     
