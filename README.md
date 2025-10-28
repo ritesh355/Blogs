@@ -224,10 +224,33 @@ chmod -R u+w node_modules package-lock.json 2>/dev/null || true
 
 ---
 ### Step 8: AWS CodeBuild Project (MyAppBuild)
-Field,|Value
-Source|,GitHub (ritesh/my-aws-cicd-app)
-Environment|,"Ubuntu, Node.js 18"
-Buildspec,|buildspec.yml
-Artifact,S3| → myapp-cicd-artifacts-123
-Service Role|,CodeBuildServiceRole
 
+
+| Field          | Value                                    |
+|----------------|------------------------------------------|
+| **Source**     | GitHub (`ritesh/my-aws-cicd-app`)        |
+| **Environment**| Ubuntu, Node.js 18                       |
+| **Buildspec**  | `buildspec.yml`                          |
+| **Artifact**   | S3 → `myapp-cicd-artifacts-123`          |
+| **Service Role**| `CodeBuildServiceRole`                  |
+
+---
+### Step 9: AWS CodeDeploy Application (MyAppDeploy)
+- **Application Name**: MyAppDeploy
+- **Compute Platform**: EC2/On-Premises
+- **Deployment Group**: ProductionGroup
+   - Tag: Name=MyAppServer
+   - Instance: ip-172-31-19-118
+- **Service Role**: CodeDeployServiceRole
+
+---
+
+### step 10 AWS CodePipeline (`MyAppPipeline`)
+
+| Stage   | Provider       | Configuration                          |
+|---------|----------------|----------------------------------------|
+| **Source**  | GitHub (v2)    | `MyAppGitHubConnection`, `main` branch |
+| **Build**   | CodeBuild      | `MyAppBuild`                           |
+| **Deploy**  | CodeDeploy     | `MyAppDeploy`, `ProductionGroup`       |
+
+---
