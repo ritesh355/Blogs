@@ -151,8 +151,83 @@ AWSCodeDeployRole → Predefined AWS managed policy
 - AmazonS3FullAccess
 
 ---
+### Step 4: GitHub Repository Setup
+```bash
+git init
+git remote add origin https://github.com/ritesh/my-aws-cicd-app.git
+```
+.gitignore:
+```text
+node_modules/
+package-lock.json
+```
+Why? Prevents EACCES errors by excluding locked files from artifacts.
 
+---
 
+### Step 5: buildspec.yml — Build Configuration
+```yml
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+  build:
+    commands:
+      - echo "Build completed"
+      - rm -rf node_modules package-lock.json
+artifacts:
+  files:
+    - appspec.yml
+    - index.js
+    - package.json
+    - scripts/**/*
+  discard-paths: no
+```
 
+**Critical Fix**: rm -rf node_modules package-lock.json avoids permission conflicts.
 
+---
+### Step 6: appspec.yml — Deployment Steps
+```yml
+version: 0.1
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/my-app
+hooks:
+  AfterInstall:
+    - location: scripts/install_deps.sh
+      timeout: 300
+      runas: ubuntu
+```
+
+Runs install_deps.sh as ubuntu user to avoid root permission issues.
+
+---
+### Step 7: scripts/install_deps.sh — Fix Permissions
+```bash
+#!/bin/bash
+cd /home/ubuntu/my-app
+rm -rf node_modules package-lock.json
+npm install --cache /home/ubuntu/.npm --no-audit
+chmod -R u+w node_modules package-lock.json 2>/dev/null || true
+```
+---
+**Key Fixes:**
+
+- Clears old node_modules
+- Uses custom npm cache
+- Fixes write permissions
+
+---
+### Step 8: AWS CodeBuild Project (MyAppBuild)
+Field,|Value
+Source|,GitHub (ritesh/my-aws-cicd-app)
+Environment|,"Ubuntu, Node.js 18"
+Buildspec,|buildspec.yml
+Artifact,S3| → myapp-cicd-artifacts-123
+Service Role|,CodeBuildServiceRole
 
